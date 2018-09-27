@@ -12,4 +12,6 @@ def login_action(request):
         username = request.GET.get('username')
         password = request.GET.get('password')
         if username == '' or password == '':
-            return render(request, 'index.html',{'error':'用户名或密码不能为空'})
+            return render(request, 'index.html',
+                          {'error':'用户名或密码不能为空'}
+                          )
