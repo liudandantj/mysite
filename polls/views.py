@@ -19,12 +19,21 @@ def login_action(request):
         else:
             user=auth.authenticate(username=username,password=password)
             print(user)
-            print(type(user))
+
             if user is not None:
-               auth.login(request,user)   #验证登陆
-               return render(request, 'project_manage.html')
+               #auth.login(request,user)   #验证登录
+               response= HttpResponseRedirect('/project_manage/')
+               #response.set_cookie('user',username,3600)#
+               request.session['user']=username
+               return response
+               #return render(request, 'project_manage.html',{'user':user})
             else:
                 return render(request, 'index.html',{'error':'用户名或密码错误'})
+def project_manage(request):
+    #username=request.COOKIES.get('user','')
+    username=request.session.get('user','')#读取浏览器session
+    return render(request,'project_manage.html',{'user':username})
+
 
 
 
