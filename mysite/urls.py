@@ -20,6 +20,11 @@ from polls import views
 
 urlpatterns=[path('admin/',admin.site.urls),
              path('',views.index),
+             path('accounts/login/',views.index),
              path('login_action/',views.login_action),
-             path('project_manage/', views.project_manage)]
+             path('logout/',views.logout),
+             # path('manage/',include('project_app.urls'))
+             # path('project_manage/', views.project_manage),
+             # path('add_project/',views.add_project)
+ ]
 
