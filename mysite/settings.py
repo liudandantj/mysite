@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+#添加新项目时
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

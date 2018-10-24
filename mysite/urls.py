@@ -16,15 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include       #include函数,url分解器，引入在别的app上写的urls.py
 from polls import views
+from project_app import urls
 
-
+#polls登录密码，显示
+#project_app项目和模块
+#interface_app 用例和任务
+#tools_app测试工具
 urlpatterns=[path('admin/',admin.site.urls),
              path('',views.index),
              path('accounts/login/',views.index),
              path('login_action/',views.login_action),
              path('logout/',views.logout),
-             # path('manage/',include('project_app.urls'))
+             path('manage/',include('project_app.urls'))]
              # path('project_manage/', views.project_manage),
              # path('add_project/',views.add_project)
- ]
 

@@ -24,7 +24,7 @@ def login_action(request):
 
             if user is not None:
                auth.login(request,user)   #记录用户登录状态
-               response= HttpResponseRedirect('/project_manage/')#跳转到某一指定的页面，没有参数
+               response= HttpResponseRedirect('/manage/project_manage/')#跳转到某一指定的页面，没有参数
                #response.set_cookie('user',username,3600)#
                request.session['user']=username
                return response
@@ -37,7 +37,6 @@ def logout(request):
     auth.logout(request)#清除用户登录状态
     response= HttpResponseRedirect('/')#跳转到主界面
     return response
-
 
 
 
