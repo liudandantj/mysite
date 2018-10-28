@@ -25,9 +25,10 @@ def add_project(request):
             # process the data in form.cleaned_data as required
             name = form.cleaned_data['name']
             describe = form.cleaned_data['describe']
-            print(name)
-            print(describe)
-            Project.objects.create(name=name,describe=describe)
+            status=form.cleaned_data['status']
+            # print(name)
+            # print(describe)
+            Project.objects.create(name=name,describe=describe,status=status)
             # redirect to a new URL:
             return HttpResponseRedirect('/manage/project_manage/')
 
@@ -58,14 +59,5 @@ def edit_project(request,pid):
     return render(request, 'project_manage.html', {'type':'edit',
                                                    'form': form})
 def delete_project(request,pid):
-    if request.method == 'POST':
-       pass
-    else:
-        form = ProjectForm()
-
-    return render(request, 'project_manage.html', {'type':'delete',
-                                                   'form': form})
-
-
-
-
+    Project.objects.get(id=pid).delete()
+    return HttpResponseRedirect('/manage/project_manage/')
