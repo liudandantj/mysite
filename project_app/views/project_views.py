@@ -42,12 +42,12 @@ def edit_project(request,pid):
     if request.method == 'POST':
         form=ProjectForm(request.POST)
         if form.is_valid():
-            model=Project.objects.get(id=pid)
+            project=Project.objects.get(id=pid)
 
-            model.name = form.cleaned_data['name']
-            model.describe = form.cleaned_data['describe']
-            model.status = form.cleaned_data['status']
-            model.save
+            project.name = form.cleaned_data['name']
+            project.describe = form.cleaned_data['describe']
+            project.status = form.cleaned_data['status']
+            project.save()
             # redirect to a new URL:
             return HttpResponseRedirect('/manage/project_manage/')
     else:
