@@ -35,6 +35,7 @@ class UserTestCase(TestCase):
         users = User.objects.all()
         self.assertEqual(len(users), 0)
 
+
 class IndexTest(TestCase):
     def setUp(self):
         # Every test needs a client.
@@ -86,5 +87,18 @@ class LoginActionTest(TestCase):
 
         # Check that the response is 200 OK.
         self.assertEqual(response.status_code, 302)
+class LogoutActionTest(TestCase):
+    """验证退出功能"""
+    def setUp(self):
+        # Every test needs a client.
+        User.objects.create_user("test02", "test02@email.com", "test12345678")
+        self.client = Client()
+
+    def test_logout(self):
+        login_data = {'username': 'test02', 'password': 'test12345678'}
+        self.client.post('/login_action/', data=login_data)
+        response = self.client.post('/logout/', data=login_data)
+        self.assertEqual(response.status_code, 302)
+
 
 
