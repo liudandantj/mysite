@@ -79,7 +79,6 @@ class LoginActionTest(TestCase):
         self.assertIn('用户名或密码错误', login_html)
     def test_login_success(self):
         """测试登录成功"""
-        """测试用户名密码错误"""
         login_data = {'username': 'test02', 'password': 'test12345678'}
         response = self.client.post('/login_action/', data=login_data)
 

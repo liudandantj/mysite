@@ -20,7 +20,7 @@ def login_action(request):
                           )
         else:
             user=auth.authenticate(username=username,password=password)
-            print(user)
+            # print(user)
 
             if user is not None:
                auth.login(request,user)   #记录用户登录状态
